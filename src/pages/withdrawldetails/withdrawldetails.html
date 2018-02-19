@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Withdrawl - Edit</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="saveData()">
+                <ion-icon name="md-document"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>
+            Transaction
+        </ion-list-header>
+        <ion-item>
+            <ion-label floating>Amount Withdrawn</ion-label>
+            <ion-input [(ngModel)]="amount" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Amount Debited (USD)</ion-label>
+            <ion-input [(ngModel)]="debitedAmount" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Conversion Charges (USD)</ion-label>
+            <ion-input [(ngModel)]="converstionCharges" type="number"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Details
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label floating>Date of Transaction</ion-label>
+            <ion-datetime [(ngModel)]="month" displayFormat="DD-MMM-YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Currency Type</ion-label>
+            <ion-select [(ngModel)]="currencyType">
+                <ion-option value="MXN">Mexican Pesos</ion-option>
+                <ion-option value="USD">US Dollars</ion-option>
+            </ion-select>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Computed Fields
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label>Debited</ion-label>
+            <ion-label>${{debitedTotal | number : '1.2-2'}} USD</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Actual</ion-label>
+            <ion-label>${{actualTotal | number : '1.2-2'}}USD</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Difference</ion-label>
+            <ion-label>${{difference | number : '1.2-2'}}USD</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
